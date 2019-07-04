@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html data-sw-translate="">
+<head>
+    <%include("/meta.html"){}%>
+     <%include("/header.html"){}%>
+
+
+
+</head>
+<body>
+<div class="layui-fluid">
+    <table class="layui-table" isLoad="1">
+        <tbody class="layui-table-body">
+        <tr>
+            <td>节点名称:</td>
+            <td>${NodeInfoDto.nickName}</td>
+        </tr>
+        <tr>
+            <td>发起者公钥:</td>
+            <td>${NodeInfoDto.producerPublicKey}</td>
+        </tr>
+        <tr>
+            <td>排名:</td>
+            <td>${NodeInfoDto.rank}</td>
+        </tr>
+        <tr>
+            <td>票数:</td>
+            <td>${NodeInfoDto.value}</td>
+        </tr>
+        <tr>
+            <td>投票人数票数:</td>
+            <td>${size}
+                <button onclick="check('${NodeInfoDto.producerPublicKey}')">查看</button>
+            </td>
+        </tr>
+        <tr>
+            <td>官网:</td>
+            <td>${NodeInfoDto.url}</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+<script type="text/javascript">
+    function check(publicKey) {
+        layui.use("fsCommon", function () {
+            var fsCommon = layui.fsCommon;
+            var url = "/node/info.html?producerPublicKey=" + publicKey;
+            fsCommon.open("投票", "800px", "600px", url, "", 0)
+        });
+    }
+</script>
+</body>
+</html>

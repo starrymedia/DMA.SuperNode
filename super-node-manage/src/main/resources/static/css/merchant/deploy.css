@@ -1,0 +1,39 @@
+.step-btn {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    background: #33cc66;
+    border: none;
+    color: white;
+}
+
+.radio-group {
+    position: absolute;
+    bottom: 8px;
+}
+
+.layui-icon-dialogue {
+    font-size: 24px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.productSku input, .productSku select {
+    max-width: 100px;
+    min-width: 70px;
+    height: 20px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.layui-upload-img {
+    width: 92px;
+    height: 92px;
+    margin: 0 10px 10px 0;
+}
+
+.layui-upload-list{
+    /*min-height: 134px!important;*/
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin</title>
+    <%include("/meta.html"){}%>
+    <%include("/header.html"){}%>
+    <link rel="stylesheet" type="text/css" href="${ctxPath!}/css/login.css" media="all"/>
+</head>
+<body>
+<img class="video-player" height="100%" width="100%" src="${ctxPath!}/images/login_bg.jpg">
+<div class="video_mask"></div>
+<div class="login">
+    <h1>Admin</h1>
+    <form class="layui-form" method="post" onsubmit="return false;">
+
+        <div class="layui-form-item">
+            <input class="layui-input" name="username" value="" placeholder="用户名" lay-verify="required" type="text"
+                   autocomplete="off">
+        </div>
+        <div class="layui-form-item">
+            <input class="layui-input" name="password" value="" placeholder="密码" lay-verify="required" type="password"
+                   autocomplete="off">
+        </div>
+        <!--<div class="layui-form-item form_code">-->
+        <!--<input class="layui-input" name="verifyCodeActual" placeholder="验证码" lay-verify="required" type="text" autocomplete="off">-->
+        <!--<div class="code"><img id="captcha_img" alt="点击更换" title="点击更换" onclick="refresh()" src="/captcha/getCaptcha.jpg" width="116" height="36"/></div>-->
+        <!--</div>-->
+        <button class="layui-btn login_btn" onclick="login()">登录</button>
+    </form>
+</div>
+<%include("/footer.html"){}%>
+<script type="text/javascript">
+
+
+    //登录按钮事件
+
+    function login() {
+
+        layui.use(['form', 'layer','fsCommon'], function () {
+            var form = layui.form,
+                layer = parent.layer === undefined ? layui.layer : parent.layer,
+                $ = layui.jquery,fsCommon  = layui.fsCommon;
+
+            var urls = {
+                login: "/login.do"
+            };
+
+            $(window).resize(function () {
+                if ($(".video-player").width() > $(window).width()) {
+                    $(".video-player").css({
+                        "height": $(window).height(),
+                        "width": "auto",
+                        "left": -($(".video-player").width() - $(window).width()) / 2
+                    });
+                } else {
+                    $(".video-player").css({
+                        "width": $(window).width(),
+                        "height": "auto",
+                        "left": -($(".video-player").width() - $(window).width()) / 2
+                    });
+                }
+            }).resize();
+
+            $.ajax({
+                url: urls.login,
+                data: $("form").serializeArray(),
+                type: 'POST',
+                success: function (obj) {
+                    if (obj.success) {
+                        window.location.href = "/index.html";
+                    } else {
+                        fsCommon.msg(obj);
+                    }
+                },
+                error: function () {//失败处理函数
+                    fsCommon.errorMsg("请求异常！");
+                }
+            });
+
+        });
+
+    }
+</script>
+</body>
+
+</html>

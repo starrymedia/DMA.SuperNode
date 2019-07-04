@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%include("/meta.html"){}%>
+    <%include("/header.html"){}%>
+</head>
+<body>
+<div>
+    <div class="layui-fluid">
+        <div class="layui-row layui-col-space1">
+            <div class="layui-col-md12">
+                <div class="layui-form-query">
+                    <form style="display: none" class="layui-form" id="query_form">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-mid" data-sw-translate="menu@name">名称：</label>
+                                <div class="layui-input-inline" style="width: 100px;">
+                                    <input type="text" name="name" autocomplete="off" class="layui-input"/>
+                                </div>
+                            </div>
+                            <!--<div class="layui-inline">-->
+                            <!--<label class="layui-form-mid">时间：</label>-->
+                            <!--<div class="layui-input-inline" style="">-->
+                            <!--<input type="text" data-sw-translate='time' name="createDate" autocomplete="off" class="layui-input fsDate" dateRange="1" placeholder=" - "/>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <button class="layui-btn" type="button" function="query">
+                                        <i class="layui-icon layui-icon-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+            <div class="layui-col-md12">
+                <div class="layui-row grid-demo">
+                    <div class="layui-col-md12">
+                        <button class="layui-btn" function="top" topUrl="/sys/core/button/add.html" topWidth="800px"
+                                isMaximize="0" topHeight="600px" topTitle="新增按钮" inputs="menuId:#menuId">
+                            <i class="layui-icon layui-icon-add-circle"></i>
+                        </button>
+                        <button class="layui-btn layui-btn-danger" function="submit" method="post"
+                                url="/sys/core/button/deleteBatch.do" isMutiDml="1" isConfirm="1" confirmMsg="是否确定删除选中的数据？"
+                                inputs="id:">
+                            <i class="layui-icon layui-icon-delete"></i>
+                        </button>
+                        <button class="layui-btn" function="refresh">
+                            <i class="layui-icon layui-icon-refresh-3"></i>
+                        </button>
+                    </div>
+                    <div class="layui-col-md12">
+                        <table id="fsDatagrid" lay-filter="fsDatagrid" class="fsDatagrid" isLoad="1"
+                               url="/sys/core/button/page.json" isPage="1" sortType="0" pageSize="10"
+                               defaultForm="query_form" height="full-135"></table>
+
+                        <div class="fsDatagridCols">
+                            <p type="numbers" title="#"/>
+                            <p checkbox="true"/>
+                            <p field="id" title="ID" width="100" sort="true"/>
+                            <p field="name" title="名称" width="150"/>
+                            <!--<p field="menuId" title="菜单" width="150" />-->
+                            <p field="permission" title="权限代码" width="150"/>
+                            <p fixed="right" align="center" toolbar="#toolBar" title="操作" width="250"/>
+                        </div>
+
+                        <script type="text/html" id="toolBar">
+                            <a class="layui-btn layui-btn-xs" lay-event="top" topUrl="/sys/core/button/edit.html"
+                               topWidth="800px" topHeight="600px" topTitle="编辑" inputs="id:">编辑</a>
+                            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="submit"
+                               url="/sys/core/button/delete.do" isConfirm="1" method="post" confirmMsg="是否确定删除当前记录？"
+                               inputs="id:">删除</a>
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%include("/footer.html"){}%>
+</body>
+</html>

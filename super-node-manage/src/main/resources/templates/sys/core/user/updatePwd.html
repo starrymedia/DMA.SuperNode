@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%include("/meta.html"){}%>
+    <%include("/header.html"){}%>
+</head>
+<body>
+<div class="layui-fluid">
+    <form class="layui-form" id="add_form">
+        <div class="layui-form-item">
+            <label class="layui-form-label" data-sw-translate="old@pwd">旧密码</label>
+            <div class="layui-input-inline">
+                <input type="password" data-sw-translate="please@input" name="oldPwd" lay-verify="required"
+                       autocomplete="off" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" data-sw-translate="new@pwd">新密码</label>
+            <div class="layui-input-inline">
+                <input type="password" data-sw-translate="please@input" id="newPwd" name="newPwd" lay-verify="required"
+                       autocomplete="off" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" data-sw-translate="confirm@pwd">确认新密码</label>
+            <div class="layui-input-inline">
+                <input type="password" name="confirm" data-sw-translate="please@input@confirm"
+                       lay-verify="required|equals" equalsId="newPwd" autocomplete="off" class="layui-input"/>
+            </div>
+        </div>
+        <hr/>
+        <div class="layui-form-item" style="text-align: center;">
+            <button class="layui-btn" lay-submit="" lay-filter="save" url="/sys/core/user/updatePwd.do"><i
+                    class="layui-icon">&#xe642;</i><span data-sw-translate="btn@confirm">确认</span></button>
+            <button type="button" class="layui-btn layui-btn-primary" function="close" data-sw-translate="btn@close">
+                关闭
+            </button>
+        </div>
+    </form>
+</div>
+<%include("/footer.html"){}%>
+<script type="text/javascript">
+    layui.use(['form'], function () {
+        var $ = layui.jquery,
+            form = layui.form;
+        //扩展form表单验证
+        form.verify({
+            confirmPwd: function (value, item) {
+                var newPwd = $("#newPwd").val();
+                if (newPwd != '') {
+                    if (value != newPwd) {
+                        return window.Translator._tryTranslate("两次密码要一致！");
+                    }
+                }
+            }
+        });
+    });
+</script>
+<%include("/footer.html"){}%>
+
+</body>
+</html>
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html data-sw-translate="">
+<head>
+    <%include("/meta.html"){}%>
+    <%include("/header.html"){}%>
+</head>
+<body>
+<div>
+    <div class="layui-fluid">
+        <div class="layui-row layui-col-space1">
+
+            <div class="layui-col-md12">
+                <div class="layui-row grid-demo">
+
+                    <div class="layui-col-md12">
+                        <table id="fsDatagrid" lay-filter="fsDatagrid" class="fsDatagrid" isLoad="1"
+                               url="/node/votersInfo.json" inputs="address:" isPage="1" sortType="0" pageSize="10"
+                               defaultForm="query_form"
+                               height="full-135"></table>
+
+                        <div class="fsDatagridCols">
+                            <p type="numbers" title="#"/>
+                            <p  field="address" title="地址" sort="true" width="300"/>
+                            <p  field="voteValue" title="投票数" width="200"/>
+                            <p  field="voteTime" title="投票时间" templet="#createtimeTpl" width="180"/>
+                            <p  field="voteHeight" title="投票块高" width="100"/>
+
+                            <p  field="blockHeight" title="当前块高" width="100"/>
+                            <p field="totalValue" title="总投票数" width="200"/>
+
+                        </div>
+
+                        <script type="text/html" id="createtimeTpl">
+                            {{#  return layui.fsUtil.toDateString(d.voteTime*1000) }}
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%include("/footer.html"){}%>
+</body>
+</html>

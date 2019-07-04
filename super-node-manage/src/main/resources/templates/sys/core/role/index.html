@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%include("/meta.html"){}%>
+    <%include("/header.html"){}%>
+</head>
+<body>
+<div>
+    <div class="layui-fluid">
+        <div class="layui-row layui-col-space1">
+            <div class="layui-col-md12">
+                <div class="layui-form-query">
+                    <form class="layui-form" id="query_form">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-mid">ID：</label>
+                                <div class="layui-input-inline" style="width: 100px;">
+                                    <input type="tel" name="id" autocomplete="off" class="layui-input"/>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-mid" data-sw-translate="name">名称：</label>
+                                <div class="layui-input-inline" style="width: 100px;">
+                                    <input type="text" data-sw-translate="please@input" name="name" autocomplete="off"
+                                           class="layui-input"/>
+                                </div>
+                            </div>
+                            <!--<div class="layui-inline">-->
+                            <!--<label class="layui-form-mid" data-sw-translate="time" >时间：</label>-->
+                            <!--<div class="layui-input-inline" style="">-->
+                            <!--<input type="text" name="createDate" data-sw-translate="please@select"  autocomplete="off" class="layui-input fsDate" dateRange="1" placeholder=" - "/>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <button class="layui-btn" type="button" function="query">
+                                        <i class="layui-icon layui-icon-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+            <div class="layui-col-md12">
+                <div class="layui-row grid-demo">
+                    <div class="layui-col-md12">
+                        <button class="layui-btn" function="top" topUrl="/sys/core/role/add.html" topWidth="800px"
+                                isMaximize="0" topHeight="600px" topTitle="新增">
+                            <i class="layui-icon layui-icon-add-circle"></i>
+                        </button>
+                        <button class="layui-btn layui-btn-danger" function="submit" method="post"
+                                url="/sys/core/role/deleteBatch.do" isMutiDml="1" isConfirm="1" confirmMsg="是否确定删除选中的数据？"
+                                inputs="id:">
+                            <i class="layui-icon layui-icon-delete"></i>
+                        </button>
+                        <button class="layui-btn" function="refresh">
+                            <i class="layui-icon layui-icon-refresh-3"></i>
+                        </button>
+                    </div>
+                    <div class="layui-col-md12">
+                        <table id="fsDatagrid" lay-filter="fsDatagrid" class="fsDatagrid" isLoad="1"
+                               url="/sys/core/role/page.json" isPage="1" sortType="0" pageSize="10" defaultForm="query_form"
+                               height="full-135"></table>
+
+                        <div class="fsDatagridCols">
+                            <p type="numbers" title="#"/>
+                            <p checkbox="true"/>
+                            <p data-sw-translate="ID" field="id" title="ID" width="100" sort="true"/>
+                            <p data-sw-translate="name" field="name" title="名称" width="30%"/>
+                            <p data-sw-translate="role@description" field="description" title="角色描述" width="180"/>
+                            <p data-sw-translate="time@createTime" field="createtime" title="创建时间" width="180"
+                               templet="#createTimeTpl"/>
+                            <p data-sw-translate="time@updateTime" field="updateTime" title="修改时间" width="180"
+                               templet="#updateTimeTpl"/>
+                            <p data-sw-translate="operate" fixed="right" align="center" toolbar="#toolBar" title="操作"
+                               width="300"/>
+                        </div>
+
+
+                        <script type="text/html" id="createTimeTpl">
+                            {{#  return layui.fsUtil.toDateString(d.createTime) }}
+                        </script>
+                        <script type="text/html" id="updateTimeTpl">
+                            {{#  return layui.fsUtil.toDateString(d.updateTime) }}
+                        </script>
+                        <script type="text/html" id="toolBar">
+                            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="top"
+                               topUrl="/sys/core/role/edit.html" topMode="readonly" topWidth="800px" topHeight="600px"
+                               topTitle="查看" inputs="id:" data-sw-translate="btn@view">查看</a>
+                            <a class="layui-btn layui-btn-xs" lay-event="top" topUrl="/sys/core/role/edit.html"
+                               topWidth="800px" topHeight="600px" topTitle="编辑" inputs="id:"
+                               data-sw-translate="btn@edit">编辑</a>
+                            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="submit"
+                               url="/sys/core/role/delete.do" isConfirm="1" method="post" confirmMsg="是否确定删除当前记录？"
+                               inputs="id:" data-sw-translate="btn@delete">删除</a>
+                            <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="top"
+                               topUrl="/sys/core/role/permission.html" topWidth="800px" topHeight="600px" topTitle="授权"
+                               inputs="id:" data-sw-translate="btn@approve">授权</a>
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%include("/footer.html"){}%>
+
+</body>
+</html>

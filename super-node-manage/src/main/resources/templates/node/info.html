@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%include("/meta.html"){}%>
+    <%include("/header.html"){}%>
+</head>
+<body>
+<div class="layui-fluid">
+
+
+
+
+    <div class="layui-col-md12">
+        <table id="fsDatagrid" lay-filter="fsDatagrid" class="fsDatagrid" isLoad="1"
+               url="/node/info.json" inputs="producerPublicKey:" isPage="0" sortType="0" pageSize="10" defaultForm="query_form"
+               height="full-10"></table>
+
+        <div class="fsDatagridCols">
+
+            <p data-sw-translate="address" field="address" title="地址" width="350"/>
+            <p data-sw-translate="value" field="value" title="票数" width="170"/>
+            <p data-sw-translate="time" field="time" title="投票时间" width="180"
+               templet="#createTimeTpl"/>
+
+        </div>
+        <script type="text/html" id="createTimeTpl">
+            {{#  return layui.fsUtil.toDateString(d.time) }}
+        </script>
+
+    </div>
+
+</div>
+<%include("/footer.html"){}%>
+</body>
+</html>

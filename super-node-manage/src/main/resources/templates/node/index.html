@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%include("/meta.html"){}%>
+    <%include("/header.html"){}%>
+</head>
+<body>
+<div>
+    <div class="layui-fluid">
+        <div class="layui-row layui-col-space1">
+
+
+
+            <div class="layui-col-md12">
+                <div class="layui-form-query">
+                    <form class="layui-form" id="query_form">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-mid">地址：</label>
+                                <div class="layui-input-inline" style="width: 300px;">
+                                    <input type="tel" name="address" autocomplete="off" class="layui-input"/>
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <div class="layui-input-inline">
+                                    <button class="layui-btn" type="button" function="query">
+                                        <i class="layui-icon layui-icon-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+            <div class="layui-col-md12">
+                <div class="layui-row grid-demo">
+
+                    <div class="layui-col-md12">
+                        <table id="fsDatagrid" lay-filter="fsDatagrid" class="fsDatagrid" isLoad="1"
+                               url="/node/list.json" isPage="0" sortType="0" pageSize="10" defaultForm="query_form"
+                               height="full-10"></table>
+
+                        <div class="fsDatagridCols">
+                            <p data-sw-translate="rank" field="rank" title="排名" width="80"/>
+                            <p data-sw-translate="nickName" field="nickName" title="名称" width="200"/>
+                            <p data-sw-translate=value" field="value" title="票数" width="200"/>
+                            <p data-sw-translate=ownerPublicKey" field="ownerPublicKey" title="所有人公钥" width="300"/>
+                            <p data-sw-translate=url" field="url" title="url" width="200"/>
+                            <p data-sw-translate="operate" fixed="right" align="center" toolbar="#toolBar" title="操作"
+                               width="80"/>
+                        </div>
+                        <script type="text/html" id="toolBar">
+                            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="top"
+                               topUrl="/node/info.html" topMode="readonly" topWidth="800px" topHeight="600px"
+                               topTitle="查看" inputs="producerPublicKey:" data-sw-translate="btn@view">查看</a>
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <%include("/footer.html"){}%>
+</body>
+</html>

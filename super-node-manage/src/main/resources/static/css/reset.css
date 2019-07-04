@@ -1,0 +1,144 @@
+/*
+!*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*!
+::-webkit-scrollbar {
+    width: 4px; !*滚动条宽度*!
+    height: 4px; !*滚动条高度*!
+}
+
+!*定义滚动条轨道 内阴影+圆角*!
+::-webkit-scrollbar-track {
+    !*-webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);*!
+    border-radius: 4px; !*滚动条的背景区域的圆角*!
+    background-color:transparent; !*滚动条的背景颜色*!
+}
+
+!*定义滑块 内阴影+圆角*!
+::-webkit-scrollbar-thumb {
+    border-radius: 4px; !*滚动条的圆角*!
+    -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, .3);
+    background-color: transparent; !*滚动条的背景颜色*!
+}
+*/
+
+.layui-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    text-align: right;
+    z-index: 1000;
+    background-color: #5464a9;
+    color: #46f57f;
+    height: 60px;
+}
+
+.layui-nav .layui-nav-item {
+    text-align: right;
+}
+
+/*导航栏菜单颜色*/
+.layui-nav .layui-nav-child a:hover {
+    color: #5464a9;
+}
+
+/*fieldset - 下划线*/
+.layui-field-title {
+    margin: 20px 0;
+    border-width: 0px 0px 1px;
+}
+
+.layui-container {
+    width: 870px;
+}
+
+.layui-upload-drag .layui-icon {
+    color: #46f57f;
+}
+
+.layui-table-cell {
+    height: 45px;
+    line-height: 45px;
+    padding: 0 15px;
+}
+
+fieldset {
+    position: relative;
+}
+
+.content-header i {
+    position: absolute;
+    top: 0px;
+    height: 70px;
+    margin-right: 20px;
+
+}
+
+.content-header .layui-elem-field legend {
+    font-size: 30px;
+}
+
+.layui-elem-field legend {
+    margin-left: 70px;
+    padding: 16px 10px;
+}
+
+/*.layui-form-label{*/
+/*text-align: left;*/
+/*width: auto;*/
+/*font-size: 16px;*/
+/*font-weight: 600;*/
+/*}*/
+/*.layui-input-block{*/
+/*margin-left: 0;*/
+/*padding: 9px 15px;*/
+/*}*/
+
+/*.layui-input, .layui-textarea{*/
+/*width: 650px;*/
+/*font-size: 16px;*/
+/*}*/
+/*.layui-input:focus, .layui-textarea:focus {*/
+/*border-color: #33cc66;*/
+/*}*/
+
+.layui-container {
+    width: 1000px;
+}
+
+.search-form span {
+    padding: 10px 26px;
+    margin-left: 5px;
+    color: #000000;
+    background: #eafaef;
+    font-size: 14px;
+}
+
+table th {
+    background: #eafaef;
+    font-size: 14px;
+    border: none;
+    height: 40px;
+    color: #000000;
+}
+
+select[lay-ignore] {
+    display: block;
+    width: 100%;
+    padding-left: 10px;
+    height: 38px;
+    background-color: #fff;
+    line-height: 1.3;
+    line-height: 38px \9;
+    border-radius: 2px;
+    border: 1px solid #e6e6e6;
+}
+
+.layui-laypage-limits select[lay-ignore] {
+    height: auto;
+}
+
+/*表格中的可编辑框*/
+.layui-table-cell input.edit {
+    width: 100%;
+    height: 100%;
+}

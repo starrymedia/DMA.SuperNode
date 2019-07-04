@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+    <title>Node</title>
+    <%include("/meta.html"){}%>
+    <%include("/header.html"){}%>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+    <!-- 顶部 -->
+    <div class="layui-header">
+        <a href="./index.html" class="layui-hide-xs">
+            <div class="layui-logo" style="font-size:20px;color:white;text-shadow:1px 1px 1px #393D49;font-weight:bold">
+                Node
+            </div>
+        </a>
+        <a href="javascript:;" class="layui-hide-xs">
+            <div class="fsSwitchMenu"><i class="fa fa-outdent"></i></div>
+        </a>
+
+        <!-- 顶部菜单 -->
+        <ul class="layui-nav layui-layout-left fsTopMenu" id="fsTopMenu" lay-filter="fsTopMenu">
+        </ul>
+
+        <ul class="layui-nav layui-layout-right">
+            <!-- 天气信息 -->
+            <li class="layui-nav-item layui-hide-xs">
+                <a href="javascript:;">
+                    <img src="${ctxPath!}/images/face.jpg" class="layui-nav-img">
+                    ${user.name!}
+                </a>
+                <dl class="layui-nav-child">
+                    <dd id="userRead" userid="${user.id!}"><a href="javascript:;">个人资料</a></dd>
+                    <dd id="editPsw"><a href="javascript:;">修改密码</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item layui-hide-xs"><a href="/loginOut.do"><i class="fa fa-sign-out"></i> 退出</a></li>
+        </ul>
+    </div>
+
+    <!-- 左边菜单 -->
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree fsLeftMenu" lay-filter="fsLeftMenu" id="fsLeftMenu">
+            </ul>
+        </div>
+    </div>
+
+    <!-- 右边内容区域 -->
+    <div class="layui-body layui-form">
+        <div class="layui-tab layui-tab-card fsTab" lay-filter="fsTab" lay-allowClose="true">
+
+            <!-- 菜单导航 -->
+            <ul class="layui-tab-title" id="fsTabMenu">
+                <li class="layui-this" lay-id="52"><i class="layui-icon">&#xe702;</i><cite>Node-Admin</cite>
+                    <p class="layui-tab-close" style="display: none;"></p></li>
+            </ul>
+
+            <!-- 内容 -->
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <iframe src="home.html"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-footer" style="background-color: #f9f9f9;border-top: 1px solid #f9f9f9;">
+        <!-- 底部固定区域 -->
+    </div>
+</div>
+
+<!-- 移动导航 -->
+<div class="site-tree-mobile layui-hide">
+    <i class="layui-icon">&#xe602;</i>
+</div>
+<div class="site-mobile-shade"></div>
+
+
+<%include("/footer.html"){}%>
+<script type="text/javascript" src="${ctxPath!}/plugins/frame/js/main.js?v=1.8.2"></script>
+</body>
+</html>
