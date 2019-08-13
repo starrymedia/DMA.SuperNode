@@ -157,7 +157,7 @@ public class NodeScheduled {
                 }
 
             }
-            sendIncome(checkHeight);
+           // sendIncome(checkHeight);
         } catch (Exception e) {
             e.printStackTrace();
         }
